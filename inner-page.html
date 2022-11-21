@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Animation Project</title>
+	<!-- CSS -->
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- BOOTSTRAP -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<!-- FONTS -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+	<!-- 3D MODEL SCRIPT -->
+	<script src="https://cdn.jsdelivr.net/npm/three@0.122/build/three.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+	<!-- Import OrbitControls.js for ThreeJS -->
+	<script src="https://assets.codepen.io/4027472/OrbitControls.js"></script>
+	<!-- Import GLTFLoader.js to load in our model-->
+	<script src="https://assets.codepen.io/4027472/GLTFLoader.js"></script>
+	<!-- SCRIPT -->
+	<!-- <script src="assets/js/script.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js" integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+	<!-- NAVIGATION -->
+	<section class="header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-4 logo-col"> <img class="w-50 animated-logo" src="assets/images/logo-new-single.gif" alt=""> </div>
+				<div class="col-lg-8">
+					<div class="container-fluid list-wrapper">
+						<ul class="menu-links-wrapper">
+							<li>About</li>
+							<li>Hololens2</li>
+							<li>Collaborations</li>
+							<li>Our Team</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- NAVIGATION END -->
+	<!-- INNER PAGE FIRST SECTION -->
+	<section class="ipf">
+		<div class="container-fluid ipff">
+			<div class="row">
+				<div class="col-lg-6 p-0 text-center"> <img class="inner-img-profile w-100" src="assets/images/od.jpg" alt=""> </div>
+				<div class="col-lg-6 pl-5 nw">
+					<div class="text-wrapper">
+						<div class="text-left">
+							<div class="text">
+								<h1 class="inner-title text-white text-left">Sejeal Katiyar</h1>
+								<h3 class="inner-sub-title text-white text-left">CEO of noVRel</h3> </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-6"> </div>
+				<div class="col-lg-6 pl-5">
+					<p class="inner-para text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- INNER PAGE FIRST SECTION END -->
+	<!-- CUSTOM ANIMATIONS -->
+	<script>
+	gsap.registerPlugin(ScrollTrigger);
+	gsap.to(".f-content-wrapper", {
+		scrollTrigger: {
+			trigger: ".f-content-wrapper",
+			scrub: 1,
+			start: "top center",
+		},
+		opacity: 5
+	});
+	// CANVAS INCOMING ANIMATION
+	gsap.to(".scene", {
+		scrollTrigger: {
+			trigger: ".second-section",
+			start: "center center"
+		},
+		y: 0
+	});
+	// CANVAS INCOMING ANIMATION END
+	gsap.to(".f-content-second-wrapper", {
+		scrollTrigger: {
+			trigger: ".f-content-second-wrapper",
+			scrub: 1,
+			start: "top center"
+		},
+		opacity: 8
+	});
+	gsap.to(".f-content-third-wrapper", {
+		scrollTrigger: {
+			trigger: ".f-content-third-wrapper",
+			scrub: 1,
+			start: "top center"
+		},
+		opacity: 12
+	});
+	gsap.to(".vid", {
+		scrollTrigger: {
+			trigger: ".f-content-third-wrapper",
+			scrub: 3,
+			start: "end end"
+		},
+		y: 1400,
+		x: -250,
+		opacity: 0
+	});
+	gsap.to(".middle-image", {
+		scrollTrigger: {
+			trigger: ".sixth-section",
+			scrub: 2,
+			end: "center"
+		},
+		opacity: 1
+	});
+	gsap.to(".sixth-content-first-wrapper", {
+		scrollTrigger: {
+			trigger: ".sixth-content-first-wrapper",
+			scrub: 2,
+			start: "top center"
+		},
+		opacity: 1
+	});
+	gsap.to(".sixth-content-middle-wrapper", {
+		scrollTrigger: {
+			trigger: ".sixth-content-middle-wrapper",
+			scrub: 2,
+			start: "top center"
+		},
+		opacity: 1
+	});
+	gsap.to(".sixth-content-last-wrapper", {
+		scrollTrigger: {
+			trigger: ".sixth-content-last-wrapper",
+			scrub: 1,
+			start: "top center"
+		},
+		opacity: 1
+	});
+	gsap.to(".ss-content-wrapper", {
+		scrollTrigger: {
+			trigger: ".third-sub-section",
+			scrub: 2,
+			end: "center"
+		},
+		x: 0
+	});
+	gsap.to(".second-ss-content-wrapper", {
+		scrollTrigger: {
+			trigger: ".second-box-wrapper",
+			scrub: 2,
+			end: "center"
+		},
+		x: 0
+	});
+	gsap.to(".third-ss-content-wrapper", {
+		scrollTrigger: {
+			trigger: ".third-box-wrapper",
+			scrub: 2,
+			end: "center"
+		},
+		x: 0
+	});
+	gsap.to(".second-ss-content-second-wrapper", {
+		scrollTrigger: {
+			trigger: ".second-box-wrapper",
+			scrub: 2,
+			end: "center"
+		},
+		x: 0
+	});
+	gsap.to(".ss-content-second-wrapper", {
+		scrollTrigger: {
+			trigger: ".third-sub-section",
+			scrub: 2,
+			end: "center"
+		},
+		x: 0
+	});
+	gsap.to(".third-ss-content-second-wrapper", {
+		scrollTrigger: {
+			trigger: ".third-box-wrapper",
+			scrub: 2,
+			end: "center"
+		},
+		x: 0
+	});
+	gsap.to(".ts-img-box", {
+		scrollTrigger: {
+			trigger: ".third-sub-section",
+			scrub: 2,
+			end: "center"
+		},
+		x: -50,
+		scale: 1.1
+	});
+	gsap.to(".second-ts-img-box", {
+		scrollTrigger: {
+			trigger: ".second-box-wrapper",
+			scrub: 2,
+			end: "center"
+		},
+		x: -50,
+		scale: 1.1
+	});
+	gsap.to(".third-ts-img-box", {
+		scrollTrigger: {
+			trigger: ".third-box-wrapper",
+			scrub: 2,
+			end: "center"
+		},
+		x: -50,
+		scale: 1.1
+	});
+	gsap.to(".t-content-wrapper", {
+		scrollTrigger: {
+			trigger: ".animation-wrapper",
+			scrub: 2
+		},
+		y: -200
+	});
+	gsap.to(".header-sub-heading-wrapper", {
+		scrollTrigger: {
+			trigger: ".header-sub-heading-wrapper",
+			scrub: 3,
+			end: "top center"
+		},
+		opacity: 1,
+		y: 0
+	});
+	// HEADER ANIMATIONS
+	gsap.to(".container-fluid.content", {
+		delay: 2,
+		duration: 2,
+		left: '0',
+		x: 0
+	});
+	gsap.to(".extra-block", {
+		duration: 2,
+		x: 0,
+		left: "0",
+		ease: "power2.out"
+	});
+	gsap.to(".extra-block", {
+		delay: 3,
+		duration: 4,
+		display: "none",
+		ease: "power2.out"
+	});
+	gsap.to(".headings-wrapper", {
+		delay: 7,
+		duration: 1,
+		opacity: 1,
+		ease: "power2.in"
+	});
+	gsap.to(".header", {
+		delay: 3,
+		duration: 3,
+		opacity: 1,
+		ease: "power2.in"
+	});
+	gsap.to("#webgl-canvas", {
+		delay: 6,
+		duration: 1,
+		opacity: 1,
+		ease: "power2.out"
+	});
+	gsap.to(".hs-two", {
+		duration: 6,
+		display: "none",
+		opacity: 0,
+		ease: "power2.out"
+	});
+	gsap.to(".hs-heading", {
+		// duration:2,
+		y: 0,
+		// opacity:1,
+		ease: "power2.out"
+	})
+	gsap.to(".animated-logo", {
+		delay: 6,
+		display: "block"
+	});
+	</script>
+	<script>
+	function scrollVideo() {
+		var video = $('#video').get(0),
+			videoLength = video.duration,
+			scrollPosition = $(document).scrollTop();
+		video.currentTime = (scrollPosition / ($(document).height() - $(window).height())) * videoLength;
+	}
+	$(window).scroll(function(e) {
+		scrollVideo();
+	});
+	</script>
+	<!-- CUSTOM ANIMATIONS END -->
+</body>
+
+</html>

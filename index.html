@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Animation Project</title>
+	<!-- CSS -->
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- BOOTSTRAP -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<!-- FONTS -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+	<!-- 3D MODEL SCRIPT -->
+	<script src="https://cdn.jsdelivr.net/npm/three@0.122/build/three.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+	<!-- Import OrbitControls.js for ThreeJS -->
+	<script src="https://assets.codepen.io/4027472/OrbitControls.js"></script>
+	<!-- Import GLTFLoader.js to load in our model-->
+	<script src="https://assets.codepen.io/4027472/GLTFLoader.js"></script>
+	<!-- SCRIPT -->
+	<!-- <script src="assets/js/script.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js" integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<style>
+.webgl{
+	z-index: 10000;
+}
+
+</style>
+
+</head>
+
+
+<body>
+	<div class="hs-two">
+		<h2 class="hs-heading">noVRel</h2> </div>
+	<!-- NAVIGATION -->
+	<section class="header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-4 logo-col"> <img class="w-50 animated-logo" src="assets/images/logo-new-single.gif" alt=""> </div>
+				<div class="col-lg-8">
+					<div class="container-fluid list-wrapper">
+						<ul class="menu-links-wrapper">
+							<li>About</li>
+							<li>Hololens2</li>
+							<li>Collaborations</li>
+							<li>Our Team</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- NAVIGATION END -->
+	<!-- HEADER -->
+	<div class="extra-block"> </div>
+	<section class="header-sec">
+		<div class="container-fluid content">
+			<div class="headings-wrapper">
+				<h1 class="header-heading">Explore Clinical Needs</h1>
+				<h1 class="header-heading">Using<span class="header-heading-span"> Augmented Reality</span></h1>
+				<h2 class="sub-head">Redefining the OR with AR</h2>
+				<button class="btn-grad">About Us</button>
+			</div>
+		</div>
+		<canvas id="webgl-canvas"></canvas>
+	</section>
+	<!-- HEADER END -->
+	<!-- SEMI HEADER START -->
+	<section class="semi-header">
+		<div class="container-fluid text-center header-sub-heading-wrapper">
+			<div class="row">
+				<div class="col-lg-6 quote-col ">
+					<div class="text-left">
+						<h1 class="header-sub-heading">We aim to revolutionize the</h1>
+						<h1 class="header-sub-heading-two">Surgical World</h1> </div>
+				</div>
+				<div class="col-lg-6 quote-col"> <img class="w-100" src="assets/images/ss.jpg"> </div>
+			</div>
+		</div>
+	</section>
+	<!-- SEMI HEADER END -->
+	<!-- SECODN SECTION -->
+	<section class="second-section">
+		<div class="container">
+			<div class="row">
+				<div class="second-sec-wrapper text-center">
+					<h2 class="second-section-heading">About noVRel</h2> <img src="assets/images/gradient.JPG" style="width:100%;" alt=""> </div>
+			</div>
+		</div>
+	</section>
+	<section class="second-sub-section">
+		<div class="container-fluid p-0">
+			<div class="animation-wrapper">
+				<div class="scene"></div>
+			</div>
+		</div>
+		</div>
+	</section>
+	<!-- SECODN SECTION END -->
+	<!-- THIRD SECTION -->
+	<section class="third-section">
+		<div class="container-fluid">
+			<div class="t-content-wrapper">
+				<p class="t-content">noVRel is a startup focused on developing solutions in the healthcare space by redefining the operating room using augmented reality. To bring AR to the forefront of surgical innovation, noVRel will employ the use of the Microsoft HoloLens 2.</p>
+			</div>
+		</div>
+	</section>
+	<!-- THIRD SECTION END -->
+	<!-- FOURTH SECTION -->
+	<section class="fourth-section">
+		<div class="container-fluid main-container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="f-content-wrapper">
+						<h2 class="fourth-section-heading">Microsoft Hololens 2</h2> <img src="assets/images/gradient.JPG" style="width:100%;" alt="">
+						<p class="f-content">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. Lorem ipsum is a name for a common type of placeholder text. Also known as filler or dummy text.</p>
+					</div>
+					<div class="f-content-second-wrapper">
+						<h2 class="fourth-section-heading">Tracking Cameras</h2> <img src="assets/images/gradient.JPG" style="width:100%;" alt="">
+						<p class="f-content fc-sec">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. Lorem ipsum is a name for a common type of placeholder text. Also known as filler or dummy text..</p>
+					</div>
+					<div class="f-content-third-wrapper">
+						<h2 class="fourth-section-heading">AR Versatality</h2> <img src="assets/images/gradient.JPG" style="width:100%;" alt="">
+						<p class="f-content">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. Lorem ipsum is a name for a common type of placeholder text. Also known as filler or dummy text.</p>
+					</div>
+					<div class="f-content-fourth-wrapper">
+						<h2 class="fourth-section-heading">Spatial Audio</h2> <img src="assets/images/gradient.JPG" style="width:100%;" alt="">
+						<p class="f-content">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. Lorem ipsum is a name for a common type of placeholder text. Also known as filler or dummy text.</p>
+					</div>
+				</div>
+				<div class="col-lg-6 video-col">
+					<div class="container-fluid like-body p-0">
+						<div class="main-ct">
+							<!-- <div class="fixed-ct"> -->
+								<!-- <video id="video" class="vid" width="800" autoplay loop muted > -->
+								<!-- <video class="vid" width="800" autoplay loop muted> -->
+									<!-- <source src="assets/videos/D.mp4" type="video/mp4"> Your browser does not support HTML video. </video> -->
+							<!-- </div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- FOURTH SECTION END  -->
+	<!-- THIRD SUB SECTION / HOLOLENS SECTION (POSITION CHANGED) -->
+	<section class="third-sub-section">
+		<div class="container-fluid">
+			<h1 class="text meet-t">Collaborations</h1>
+			<div class="first-box-wrapper">
+				<div class="row">
+					<div class="col-lg-2 ss-sec-col">
+						<div class="ss-content-second-wrapper">
+							<h6 class="content-t">Portfolio</h6> </div>
+					</div>
+					<div class="col-lg-4 ss-first-col">
+						<div class="ss-content-wrapper">
+							<h2 class="content-t">Frog, The Series</h2>
+							<p class="content-t">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+						</div>
+					</div>
+					<div class="col-lg-6"> <img class="ts-img-box" src="assets/images/SRtpnT.jpg" alt=""> </div>
+				</div>
+			</div>
+			<div class="second-box-wrapper">
+				<div class="row">
+					<div class="col-lg-2 ss-sec-col">
+						<div class="second-ss-content-second-wrapper">
+							<h6 class="content-t">Portfolio</h6> </div>
+					</div>
+					<div class="col-lg-4 ss-first-col">
+						<div class="second-ss-content-wrapper">
+							<h2 class="content-t">Second Frog</h2>
+							<p class="content-t">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+						</div>
+					</div>
+					<div class="col-lg-6"> <img class="second-ts-img-box" src="assets/images/UyITEV.jpg" alt=""> </div>
+				</div>
+			</div>
+			<div class="third-box-wrapper">
+				<div class="row">
+					<div class="col-lg-2 ss-sec-col">
+						<div class="third-ss-content-second-wrapper">
+							<h6 class="content-t">Portfolio</h6> </div>
+					</div>
+					<div class="col-lg-4 ss-first-col">
+						<div class="third-ss-content-wrapper">
+							<h2 class="content-t">Second Frog</h2>
+							<p class="content-t">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+						</div>
+					</div>
+					<div class="col-lg-6"> <img class="third-ts-img-box" src="assets/images/VcYFUT.jpg" alt=""> </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- THIRD SUB SECTION / HOLOLENS SECTION (POSITION CHANGED) -->
+	<!-- SIXTH SECTION -->
+	<section class="sixth-section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-5">
+					<div class="sixth-content-middle-wrapper pl-5">
+						<h2 class="sixth-content-heading">Base</h2>
+						<p class="sixth-content-para">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. Lorem ipsum is a name for a common type of placeholder text. Also known as filler or dummy text.</p>
+					</div>
+				</div>
+				<div class="col-lg-2 text-center"> <img class="middle-image" src="assets/images/Collaborations.jpg" alt=""> </div>
+				<div class="col-lg-5">
+					<div class="sixth-content-first-wrapper pr-5">
+						<h2 class="sixth-content-heading">Operation</h2>
+						<p class="sixth-content-para">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. Lorem ipsum is a name for a common type of placeholder text. Also known as filler or dummy text.</p>
+					</div>
+					<div class="sixth-content-last-wrapper pr-5">
+						<h2 class="sixth-content-heading">Technology</h2>
+						<p class="sixth-content-para">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. Lorem ipsum is a name for a common type of placeholder text. Also known as filler or dummy text.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- SIXTH SECTION END -->
+	<!-- SEVENTH SECTION START -->
+	<section class="seventh-section">
+		<!-- Team section container -->
+		<h1 class="text mt-5 mb-5">MEET THE TEAM</h1>
+		<div class="container-fluid team-section">
+			<!-- Team 1 -->
+			<div class="our-team">
+				<div class="pic"> <img src="assets/images/ceo.jpeg" alt=""> </div>
+				<div class="team-content">
+					<h3 class="title">Sejeal Katiyar <br> (CEO)</h3> </div>
+				<ul class="social">
+					<li>
+						<a href="#" class="fab fa-facebook"></a>
+					</li>
+					<li>
+						<a href="#" class="fab fa-twitter"></a>
+					</li>
+					<li>
+						<a href="#" class="fab fa-instagram"></a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/in/amogh-vellore-0682b7223" class="fab fa-linkedin"></a>
+					</li>
+				</ul>
+			</div>
+			<!-- Team 2 -->
+			<div class="our-team">
+				<div class="pic"> <img src="assets/images/77.jpg" alt=""> </div>
+				<div class="team-content">
+					<h3 class="title">Reetwan <br> Bandyopadhyay <br> (CMO)</h3> </div>
+				<ul class="social">
+					<li>
+						<a href="#" class="fab fa-facebook"></a>
+					</li>
+					<li>
+						<a href="#" class="fab fa-twitter"></a>
+					</li>
+					<li>
+						<a href="#" class="fab fa-instagram"></a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/in/andrew-daoud-40060121b" class="fab fa-linkedin"></a>
+					</li>
+				</ul>
+			</div>
+			<!-- Team 3 -->
+			<div class="our-team">
+				<div class="pic"> <img src="assets/images/cpo.png" alt=""> </div>
+				<div class="team-content">
+					<h3 class="title">Pranay Jain <br> (CTO)</h3> </div>
+				<ul class="social">
+					<li>
+						<a href="#" class="fab fa-facebook"></a>
+					</li>
+					<li>
+						<a href="#" class="fab fa-twitter"></a>
+					</li>
+					<li>
+						<a href="#" class="fab fa-instagram"></a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/in/garrett-martin-3b1629196/" class="fab fa-linkedin"></a>
+					</li>
+				</ul>
+			</div>
+			<!-- Team 4 -->
+			<div class="our-team">
+				<div class="pic"> <img src="assets/images/girl.png" alt=""> </div>
+				<div class="team-content">
+					<h3 class="title">Vaani Bansal</h3> </div>
+				<ul class="social">
+					<li>
+						<a href="#" class="fab fa-facebook"></a>
+					</li>
+					<li>
+						<a href="#" class="fab fa-twitter"></a>
+					</li>
+					<li>
+						<a href="#" class="fab fa-instagram"></a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/in/garrett-martin-3b1629196/" class="fab fa-linkedin"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- TEAM MEMBERS -->
+		<div class="container-fluid members-section">
+			<!-- Team 1 -->
+			<div class="our-member">
+				<div class="member-pic"> <img src="assets/images/amogh.jpg" alt=""> </div>
+				<div class="team-content">
+					<h3 class="member-title">Amogh Vellore</h3> </div>
+			</div>
+			<!-- Team 2 -->
+			<div class="our-member">
+				<div class="member-pic"> <img src="assets/images/person-2.jpg" alt=""> </div>
+				<div class="team-content">
+					<h3 class="member-title">Andrew Daoud</h3> </div>
+			</div>
+			<!-- Team 3 -->
+			<div class="our-member">
+				<div class="member-pic"> <img src="assets/images/sp.jpg" alt=""> </div>
+				<div class="team-content">
+					<h3 class="member-title">Garrett Martin</h3> </div>
+			</div>
+			<!-- Team 4 -->
+			<div class="our-member">
+				<div class="member-pic"> <img src="assets/images/samlord.jpeg" alt=""> </div>
+				<div class="team-content">
+					<h3 class="member-title">Samuel Lord</h3> </div>
+			</div>
+		</div>
+		</div>
+	</section>
+	<!-- SEVENTH SECTION END -->
+	<!-- EIGTH SECTION FOOTER -->
+	<section class="footer">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-4">
+					<h2 class="footer-text">Copyright 2022 to 2023 - noVRel</h2> </div>
+				<div class="col-lg-4 text-center"> <i class="fab fa-facebook-f"></i> <i class="fab fa-instagram"></i> <i class="fab fa-linkedin-in"></i> </div>
+				<div class="col-lg-4">
+					<div class="links-wrapper">
+						<h2 class="footer-text"> Privacy Policy</h2>
+						<h2 class="footer-text f-link"> | Cookies | </h2>
+						<h2 class="footer-text"> Terms & Conditions</h2> </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- EIGTH SECTION FOOTER END -->
+	<!-- NEW 3D MODEL -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+
+
+
+	<!-- THREE JS -->
+
+<script type="module" >
+import { RGBELoader } from 'https://cdn.skypack.dev/three@0.136/examples/jsm/loaders/RGBELoader.js';
+import { OrbitControls } from 'https://cdn.skypack.dev/three@0.136/examples/jsm/controls/OrbitControls.js';
+import { DRACOLoader } from 'https://cdn.skypack.dev/three@0.136/examples/jsm/loaders/DRACOLoader.js'
+import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.136/examples/jsm/loaders/GLTFLoader.js';
+const scene = new THREE.Scene();
+			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+			camera.position.z = 35;
+			// camera.position.x = 160
+            // camera.position.y = -260
+			// camera.position.set(200,200,20)
+			const renderer = new THREE.WebGLRenderer({
+				antialias : true,
+				alpha : true
+			});
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+			renderer.domElement.style.position = "fixed",
+    renderer.domElement.style.top = "0";
+    renderer.domElement.style.left = "0";
+    renderer.physicallyCorrectLights = true
+renderer.domElement.classList.add("webgl")
+renderer.outputEncoding = THREE.sRGBEncoding;
+
+// Controls
+const controls = new OrbitControls( camera, renderer.domElement );
+controls.target.set( 125.11598259262031,  3.3623992360177746,  -2.1293410285514345e-16)
+
+
+			
+// Loading Model
+const dracoLoader = new DRACOLoader()
+const loader = new GLTFLoader()
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/')
+dracoLoader.setDecoderConfig({ type: 'js' })
+loader.setDRACOLoader(dracoLoader)
+// let loader = new THREE.GLTFLoader()
+let model;
+loader.load("lens.glb",(gltf)=>{
+	model = gltf.scene
+	scene.add(model)
+	
+})
+
+// HDR LIGHT
+
+const rgbloader = new RGBELoader();
+rgbloader.load('studio.hdr', (texture) => {
+  texture.mapping = THREE.EquirectangularReflectionMapping;
+  scene.environment = texture;
+})
+
+
+
+// Lightning
+
+let spot = new THREE.SpotLight(0xFF5733, 5, 2800, Math.PI / 1, 8);
+		let ambient = new THREE.AmbientLight(0x222222, 50);
+		scene.add(ambient);
+		scene.add(spot);
+		const light = new THREE.PointLight(0x222222, 8);
+		light.position.set(750, 1550, 850);
+		light.castShadow = true;
+		scene.add(light);
+
+// Window Resizing 
+
+
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize(){
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+
+
+
+
+// Scroll Based Animations
+let cp = camera.position
+let ct = controls.target
+
+
+
+let tl = gsap.timeline()
+gsap.registerPlugin(ScrollTrigger)
+
+ScrollTrigger.defaults({
+    immediateRender: false,
+    ease: "power1.inOut",
+    scrub: 3,
+	toggleActions: "restart pause resume pause"
+});
+
+
+// Section 1
+tl.to(ct,{
+		x: -19.243866289343316,
+ y: 8.27821872715545,
+	 z: 0.33394623182050254,scrollTrigger: {
+          trigger : ".fourth-section-heading",
+            // markers: true,
+			start:"top bottom",
+                end: "top 40%",}})
+				
+.to(cp,{
+	x: 4.670487593998782, y: 3.6241357012952466, z: 27.97058694215801,scrollTrigger: {
+          trigger : ".fourth-section-heading",
+            // markers: true,
+			start:"top bottom",
+                end: "top 40%",
+      
+          }
+		  
+		} )
+tl.to(ct,{
+		x: -19.243866289343316,
+ y: 80.27821872715545,
+	 z: 50.33394623182050254,scrollTrigger: {
+          trigger : ".fourth-section-heading",
+            // markers: true,
+			start:"top 20%",
+                end: "top top",}})
+
+.to(cp,{
+	x: 16.670487593998782, y: 15.6241357012952466, z: 87.97058694215801,scrollTrigger: {
+          trigger : ".fourth-section-heading",
+            // markers: true,
+			start:"top 20% ",
+                end: "top top",
+      
+          }
+		  
+		} )
+		
+
+
+
+
+
+
+
+
+
+
+
+		// Section 2 Tracking Cameras
+	
+		
+		
+.to(ct,{
+	x: 4.011325101416783, y: 8.533385891222652, z: -108.5112699268946,scrollTrigger: {
+          trigger : ".f-content-second-wrapper",
+            // markers: true,
+			start:"top bottom",
+                end: "top top",
+      
+			}
+	 
+		} )
+		.to(cp,{
+			x: -17.232208614184447, y: 4.967725047499342, z: 21.8101260390995,scrollTrigger: {
+				trigger : ".f-content-second-wrapper",
+            // markers: true,
+			start:"top bottom",
+                end: "top top",
+      
+          }
+		  
+		} )
+		
+
+// Section 3 Glasses
+
+
+
+
+.to(ct,{
+	x: -91.35450100234142, y: 19.978327927775556, z: -78.62142774352922,scrollTrigger: {
+          trigger : ".f-content-third-wrapper",
+            // markers: true,
+			start:"top bottom",
+                end: "top top",
+      
+			}
+	 
+		} )
+		.to(cp,{
+			x: 7.516650532497991, y: -1.4583341141347184, z: 25.143046288390323,scrollTrigger: {
+				trigger : ".f-content-third-wrapper",
+            // markers: true,
+			start:"top bottom",
+                end: "top top",
+      
+          }
+		  
+		} )
+
+
+
+
+
+// Section Four
+
+
+
+.to(ct,{
+	x: -73.24650673205977, y: 8.66180999507814, z: -94.55249379872419,scrollTrigger: {
+          trigger : ".f-content-fourth-wrapper",
+            // markers: true,
+			start:"top bottom",
+                end: "top top",
+      
+			}
+	 
+		} )
+		.to(cp,{
+			x: 1.4016060749117685, y: 5.5027265598595285, z: 29.623915741143136,scrollTrigger: {
+				trigger : ".f-content-fourth-wrapper",
+            // markers: true,
+			start:"top bottom",
+                end: "top top",
+      
+          }
+		  
+		} )
+
+
+		.to(ct,{
+			x: 1.1927247953322435, y: 5.89177237712845, z: -1.1304356860014864,scrollTrigger: {
+          trigger : ".f-content-fourth-wrapper",
+            // markers: true,
+			start:"top 20%",
+                end: "top top",
+      
+			}
+	 
+		} )
+
+
+
+
+
+		.to(scene.rotation,{
+			y:  Math.PI * 2  ,scrollTrigger: {
+          trigger : ".f-content-fourth-wrapper",
+            // markers: true,
+			start:"top 50%",
+                end: "top top",
+      scrub : 10,
+			}
+	 
+	})
+		.to(scene.scale,{
+			x : 0,
+			y : 0,
+			z : 0
+			
+			,scrollTrigger: {
+          trigger : ".f-content-fourth-wrapper",
+            // markers: true,
+			start:"center + 800px",
+                end: "top",
+      
+			}
+	 
+	})
+	
+
+
+
+
+
+controls.enabled = false;
+
+			function animate() {
+				requestAnimationFrame( animate );
+controls.update()
+
+
+
+
+				
+				renderer.render( scene, camera );
+				
+
+
+
+
+
+			};
+		
+
+
+	 
+			animate();
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- </script> -->
+	<!-- </script> -->
+	<!-- NEW 3D MODEL END -->
+	<!-- HEADER SCRIPT -->
+	<!-- vertexShader -->
+	<script id="js-vertex-shader" type="x-shader/x-vertex"> attribute vec3 position; void main() { gl_Position = vec4(position, 1.0); } </script>
+	<!-- fragmentShader -->
+	<script id="js-fragment-shader" type="x-shader/x-fragment"> precision highp float; uniform vec2 resolution; uniform float time; uniform float xScale; uniform float yScale; uniform float distortion; void main() { vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y); float d = length(p) * distortion; float rx = p.x * (1.0 + d); float gx = p.x; float bx = p.x * (1.0 - d); float r = 0.05 / abs(p.y + sin((rx + time) * xScale) * yScale); float g = 0.05 / abs(p.y + sin((gx + time) * xScale) * yScale); float b = 0.05 / abs(p.y + sin((bx + time) * xScale) * yScale); gl_FragColor = vec4(r, g, b, 1.0); } </script>
+	<script>
+	class Stage {
+		constructor() {
+			this.renderParam = {
+				clearColor: 0x666666,
+				width: window.innerWidth,
+				height: window.innerHeight
+			};
+			this.cameraParam = {
+				left: -1,
+				right: 1,
+				top: 1,
+				bottom: 1,
+				near: 0,
+				far: -1
+			};
+			this.scene = null;
+			this.camera = null;
+			this.renderer = null;
+			this.geometry = null;
+			this.material = null;
+			this.mesh = null;
+			this.isInitialized = false;
+		}
+		init() {
+			this._setScene();
+			this._setRender();
+			this._setCamera();
+			this.isInitialized = true;
+		}
+		_setScene() {
+			this.scene = new THREE.Scene();
+		}
+		_setRender() {
+			this.renderer = new THREE.WebGLRenderer({
+				canvas: document.getElementById("webgl-canvas")
+			});
+			this.renderer.setPixelRatio(window.devicePixelRatio);
+			this.renderer.setClearColor(new THREE.Color(this.renderParam.clearColor));
+			this.renderer.setSize(this.renderParam.width, this.renderParam.height);
+		}
+		_setCamera() {
+			if(!this.isInitialized) {
+				this.camera = new THREE.OrthographicCamera(this.cameraParam.left, this.cameraParam.right, this.cameraParam.top, this.cameraParam.bottom, this.cameraParam.near, this.cameraParam.far);
+			}
+			const windowWidth = window.innerWidth;
+			const windowHeight = window.innerHeight;
+			this.camera.aspect = windowWidth / windowHeight;
+			this.camera.updateProjectionMatrix();
+			this.renderer.setSize(windowWidth, windowHeight);
+		}
+		_render() {
+			this.renderer.render(this.scene, this.camera);
+		}
+		onResize() {
+			this._setCamera();
+		}
+		onRaf() {
+			this._render();
+		}
+	}
+	class Mesh {
+		constructor(stage) {
+			this.canvas = document.getElementById("webgl-canvas");
+			this.canvasWidth = this.canvas.width;
+			this.canvasHeight = this.canvas.height;
+			this.uniforms = {
+				resolution: {
+					type: "v2",
+					value: [this.canvasWidth, this.canvasHeight]
+				},
+				time: {
+					type: "f",
+					value: 0.0
+				},
+				xScale: {
+					type: "f",
+					value: 1.0
+				},
+				yScale: {
+					type: "f",
+					value: 0.5
+				},
+				distortion: {
+					type: "f",
+					value: 0.050
+				}
+			};
+			this.stage = stage;
+			this.mesh = null;
+			this.xScale = 1.0;
+			this.yScale = 0.5;
+			this.distortion = 0.050;
+		}
+		init() {
+			this._setMesh();
+			// this._setGui();
+		}
+		_setMesh() {
+			const position = [-1.0, -1.0, 0.0,
+				1.0, -1.0, 0.0, -1.0, 1.0, 0.0,
+				1.0, -1.0, 0.0, -1.0, 1.0, 0.0,
+				1.0, 1.0, 0.0
+			];
+			const positions = new THREE.BufferAttribute(new Float32Array(position), 3);
+			const geometry = new THREE.BufferGeometry();
+			geometry.setAttribute("position", positions);
+			const material = new THREE.RawShaderMaterial({
+				vertexShader: document.getElementById("js-vertex-shader").textContent,
+				fragmentShader: document.getElementById("js-fragment-shader").textContent,
+				uniforms: this.uniforms,
+				side: THREE.DoubleSide
+			});
+			this.mesh = new THREE.Mesh(geometry, material);
+			this.stage.scene.add(this.mesh);
+		}
+		_render() {
+			this.uniforms.time.value += 0.01;
+		}
+		_setGui() {
+			const parameter = {
+				xScale: this.xScale,
+				yScale: this.yScale,
+				distortion: this.distortion
+			}
+			const gui = new dat.GUI();
+			gui.add(parameter, "xScale", 0.00, 5.00, 0.01).onChange((value) => {
+				this.mesh.material.uniforms.xScale.value = value;
+			});
+			gui.add(parameter, "yScale", 0.00, 1.00, 0.01).onChange((value) => {
+				this.mesh.material.uniforms.yScale.value = value;
+			});
+			gui.add(parameter, "distortion", 0.001, 0.100, 0.001).onChange((value) => {
+				this.mesh.material.uniforms.distortion.value = value;
+			});
+		}
+		onRaf() {
+			this._render();
+		}
+	}
+	(() => {
+		const stage = new Stage();
+		stage.init();
+		const mesh = new Mesh(stage);
+		mesh.init();
+		window.addEventListener("resize", () => {
+			stage.onResize();
+		});
+		const _raf = () => {
+			window.requestAnimationFrame(() => {
+				stage.onRaf();
+				mesh.onRaf();
+				_raf();
+			});
+		};
+		_raf();
+	})();
+	</script>
+	<!-- HEADER SCRIPT END -->
+	<!-- CUSTOM ANIMATIONS -->
+	<script>
+	gsap.registerPlugin(ScrollTrigger);
+	gsap.to(".f-content-wrapper", {
+		scrollTrigger: {
+			trigger: ".f-content-wrapper",
+			scrub: 1,
+			start: "top center",
+		},
+		opacity: 5
+	});
+	// CANVAS INCOMING ANIMATION
+	gsap.to(".scene", {
+		scrollTrigger: {
+			trigger: ".second-section",
+			start: "center center"
+		},
+		y: 0
+	});
+	// CANVAS INCOMING ANIMATION END
+	gsap.to(".f-content-second-wrapper", {
+		scrollTrigger: {
+			trigger: ".f-content-second-wrapper",
+			scrub: 1,
+			start: "top center"
+		},
+		opacity: 8
+	});
+	gsap.to(".f-content-third-wrapper", {
+		scrollTrigger: {
+			trigger: ".f-content-third-wrapper",
+			scrub: 1,
+			start: "top center"
+		},
+		opacity: 12
+	});
+	gsap.to(".vid", {
+		scrollTrigger: {
+			trigger: ".f-content-third-wrapper",
+			scrub: 3,
+			start: "end end"
+		},
+		y: 1400,
+		x: -250,
+		opacity: 0
+	});
+	gsap.to(".middle-image", {
+		scrollTrigger: {
+			trigger: ".sixth-section",
+			scrub: 2,
+			end: "center"
+		},
+		opacity: 1
+	});
+	gsap.to(".sixth-content-first-wrapper", {
+		scrollTrigger: {
+			trigger: ".sixth-content-first-wrapper",
+			scrub: 2,
+			start: "top center"
+		},
+		opacity: 1
+	});
+	gsap.to(".sixth-content-middle-wrapper", {
+		scrollTrigger: {
+			trigger: ".sixth-content-middle-wrapper",
+			scrub: 2,
+			start: "top center"
+		},
+		opacity: 1
+	});
+	gsap.to(".sixth-content-last-wrapper", {
+		scrollTrigger: {
+			trigger: ".sixth-content-last-wrapper",
+			scrub: 1,
+			start: "top center"
+		},
+		opacity: 1
+	});
+	gsap.to(".ss-content-wrapper", {
+		scrollTrigger: {
+			trigger: ".third-sub-section",
+			scrub: 2,
+			end: "center"
+		},
+		x: 0
+	});
+	gsap.to(".second-ss-content-wrapper", {
+		scrollTrigger: {
+			trigger: ".second-box-wrapper",
+			scrub: 2,
+			end: "center"
+		},
+		x: 0
+	});
+	gsap.to(".third-ss-content-wrapper", {
+		scrollTrigger: {
+			trigger: ".third-box-wrapper",
+			scrub: 2,
+			end: "center"
+		},
+		x: 0
+	});
+	gsap.to(".second-ss-content-second-wrapper", {
+		scrollTrigger: {
+			trigger: ".second-box-wrapper",
+			scrub: 2,
+			end: "center"
+		},
+		x: 0
+	});
+	gsap.to(".ss-content-second-wrapper", {
+		scrollTrigger: {
+			trigger: ".third-sub-section",
+			scrub: 2,
+			end: "center"
+		},
+		x: 0
+	});
+	gsap.to(".third-ss-content-second-wrapper", {
+		scrollTrigger: {
+			trigger: ".third-box-wrapper",
+			scrub: 2,
+			end: "center"
+		},
+		x: 0
+	});
+	gsap.to(".ts-img-box", {
+		scrollTrigger: {
+			trigger: ".third-sub-section",
+			scrub: 2,
+			end: "center"
+		},
+		x: -50,
+		scale: 1.1
+	});
+	gsap.to(".second-ts-img-box", {
+		scrollTrigger: {
+			trigger: ".second-box-wrapper",
+			scrub: 2,
+			end: "center"
+		},
+		x: -50,
+		scale: 1.1
+	});
+	gsap.to(".third-ts-img-box", {
+		scrollTrigger: {
+			trigger: ".third-box-wrapper",
+			scrub: 2,
+			end: "center"
+		},
+		x: -50,
+		scale: 1.1
+	});
+	gsap.to(".t-content-wrapper", {
+		scrollTrigger: {
+			trigger: ".animation-wrapper",
+			scrub: 2
+		},
+		y: -200
+	});
+	gsap.to(".header-sub-heading-wrapper", {
+		scrollTrigger: {
+			trigger: ".header-sub-heading-wrapper",
+			scrub: 3,
+			end: "top center"
+		},
+		opacity: 1,
+		y: 0
+	});
+	// HEADER ANIMATIONS
+	gsap.to(".container-fluid.content", {
+		delay: 2,
+		duration: 2,
+		left: '0',
+		x: 0
+	});
+	gsap.to(".extra-block", {
+		duration: 2,
+		x: 0,
+		left: "0",
+		ease: "power2.out"
+	});
+	gsap.to(".extra-block", {
+		delay: 3,
+		duration: 4,
+		display: "none",
+		ease: "power2.out"
+	});
+	gsap.to(".headings-wrapper", {
+		delay: 7,
+		duration: 1,
+		opacity: 1,
+		ease: "power2.in"
+	});
+	gsap.to(".header", {
+		delay: 3,
+		duration: 3,
+		opacity: 1,
+		ease: "power2.in"
+	});
+	gsap.to("#webgl-canvas", {
+		delay: 6,
+		duration: 1,
+		opacity: 1,
+		ease: "power2.out"
+	});
+	gsap.to(".hs-two", {
+		duration: 6,
+		display: "none",
+		opacity: 0,
+		ease: "power2.out"
+	});
+	gsap.to(".hs-heading", {
+		// duration:2,
+		y: 0,
+		// opacity:1,
+		ease: "power2.out"
+	})
+	gsap.to(".animated-logo", {
+		delay: 6,
+		display: "block"
+	});
+	</script>
+	<script>
+	function scrollVideo() {
+		var video = $('#video').get(0),
+			videoLength = video.duration,
+			scrollPosition = $(document).scrollTop();
+		video.currentTime = (scrollPosition / ($(document).height() - $(window).height())) * videoLength;
+	}
+	$(window).scroll(function(e) {
+		scrollVideo();
+	});
+	</script>
+	<!-- CUSTOM ANIMATIONS END -->
+</body>
+
+</html>
